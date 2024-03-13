@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-8-ob8-c#m9(gjg1%o=jkxhi*##75va-koy=dv1@^!+pyckk^6$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#hna ekteb domaine ta3 frontend w other domaines li tkhelihem ydiro API call
+ALLOWED_HOSTS = ["localhost",'127.0.0.1',]
 
 
 # Application definition
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'rest_framework' ,  
+    # lazem tdir CORS
+    'corsheaders',
     'userconnection',
     'knox',
     'backend',
@@ -53,12 +56,17 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # zid l cors m3a middlewares
+    'corsheaders.middleware.CorsMiddleware',
+    # ektebha 9bel hed la ligne 👇
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'userconnection.urls'
 
